@@ -1,31 +1,43 @@
-{% set version = "0.11.7" %}
+{% set version = "0.11.10" %}
 
 package:
   name: matplotlib-venn
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/m/matplotlib-venn/matplotlib-venn-{{ version }}.tar.gz
-  sha256: 8d8b3505594313099328c9f177133dd800a28f3dd68e6800a78250c0cccce317
+  #url: https://pypi.org/packages/source/m/matplotlib-venn/matplotlib-venn-{{ version }}.tar.gz
+  url: https://github.com/konstantint/matplotlib-venn/archive/refs/tags/{{ version }}.tar.gz
+  sha256: acb254f6fc0c8eb4e49df6655b316903d6babe2e9c0049636c2426a3a861cfbc
 
 build:
   number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
+  skip: True  # [py<36]
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
+    - setuptools
+    - wheel
   run:
-    - python >=3.6
+    - python
     - matplotlib-base
     - numpy
     - scipy
 
 test:
+  source_files:
+    - tests
   imports:
     - matplotlib_venn
+  commands:
+    - pip check
+    - pytest -v .
+  requires:
+    - pip
+    - pytest
 
 about:
   home: https://github.com/konstantint/matplotlib-venn
@@ -33,7 +45,10 @@ about:
   license_file: LICENSE
   license_family: MIT
   summary: Functions for plotting area-proportional two- and three-way Venn diagrams in matplotlib.
+  description: |
+    Routines for plotting area-weighted two- and three-circle venn diagrams.
   dev_url: https://github.com/konstantint/matplotlib-venn
+  doc_url: https://github.com/konstantint/matplotlib-venn/blob/master/README.rst
 
 extra:
   recipe-maintainers:
