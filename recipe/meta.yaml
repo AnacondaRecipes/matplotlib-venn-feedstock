@@ -5,7 +5,6 @@ package:
   version: {{ version }}
 
 source:
-  #url: https://pypi.org/packages/source/m/matplotlib-venn/matplotlib-venn-{{ version }}.tar.gz
   url: https://github.com/konstantint/matplotlib-venn/archive/refs/tags/{{ version }}.tar.gz
   sha256: acb254f6fc0c8eb4e49df6655b316903d6babe2e9c0049636c2426a3a861cfbc
 
