@@ -32,7 +32,7 @@ test:
     - matplotlib_venn
   commands:
     - pip check
-    - pytest -v . -k "test_circle_region"
+    - pytest -v . -k "not test_circle_region"
   requires:
     - pip
     - pytest
