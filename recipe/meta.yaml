@@ -46,7 +46,7 @@ about:
   description: |
     Routines for plotting area-weighted two- and three-circle venn diagrams.
   dev_url: https://github.com/konstantint/matplotlib-venn
-  doc_url: https://github.com/konstantint/matplotlib-venn/blob/master/README.rst
+  doc_url: https://github.com/konstantint/matplotlib-venn
 
 extra:
   recipe-maintainers:
