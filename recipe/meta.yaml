@@ -32,8 +32,8 @@ test:
     - matplotlib_venn
   commands:
     - pip check
-    - pytest -v . -k "not test_circle_region" # [py38]
-    - pytest -v .                             # [not py38]
+    - pytest -v . -k "not test_circle_region" # [py==38]
+    - pytest -v .                             # [not py==38]
   requires:
     - pip
     - pytest
