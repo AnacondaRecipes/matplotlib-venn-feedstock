@@ -1,29 +1,30 @@
-{% set version = "0.11.10" %}
+{% set version = "1.1.2" %}
 
 package:
   name: matplotlib-venn
   version: {{ version }}
 
 source:
-  url: https://github.com/konstantint/matplotlib-venn/archive/refs/tags/{{ version }}.tar.gz
-  sha256: acb254f6fc0c8eb4e49df6655b316903d6babe2e9c0049636c2426a3a861cfbc
+  url: https://pypi.org/packages/source/m/matplotlib-venn/matplotlib-venn-{{ version }}.tar.gz
+  sha256: 6f2b07a03e9bb5a62de2f32f965216739e175176f9d654dd19e7af2c22ec36e3
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  skip: True  # [py<36]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: true  # [py<39]
 
 requirements:
   host:
     - python
     - pip
     - setuptools
-    - wheel
   run:
     - python
     - matplotlib-base
     - numpy
     - scipy
+  run_constrained:
+    - shapely
 
 test:
   source_files:
@@ -32,8 +33,7 @@ test:
     - matplotlib_venn
   commands:
     - pip check
-    - pytest -v . -k "not test_circle_region" # [py==38]
-    - pytest -v .                             # [not py==38]
+    - pytest -v tests/
   requires:
     - pip
     - pytest
@@ -52,3 +52,4 @@ about:
 extra:
   recipe-maintainers:
     - pmlandwehr
+    - ocefpaf
