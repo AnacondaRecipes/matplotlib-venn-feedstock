@@ -5,8 +5,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/m/matplotlib-venn/matplotlib-venn-{{ version }}.tar.gz
-  sha256: 6f2b07a03e9bb5a62de2f32f965216739e175176f9d654dd19e7af2c22ec36e3
+  url: https://github.com/konstantint/matplotlib-venn/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 6111d8463101e1fe1c567a12d0fa8fff4315ce9acddcbbc5f0915d85d49cb019
 
 build:
   number: 0
@@ -33,7 +33,7 @@ test:
     - matplotlib_venn
   commands:
     - pip check
-    - pytest -v tests/
+    - pytest -v .
   requires:
     - pip
     - pytest
